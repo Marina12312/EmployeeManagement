@@ -4,15 +4,16 @@ import com.example.employee_management.Employee;
 import com.example.employee_management.exception.EmployeeAlreadyAddedException;
 import com.example.employee_management.exception.EmployeeNotFoundException;
 import com.example.employee_management.exception.EmployeeStorageIsFullException;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class EmployeeService {
     private final List<Employee> employees = new ArrayList<>();
     private static final int MAX_EMPLOYEES = 100;
 
-    public void addEmployee(String firstName, String lastName) {
+    public Employee addEmployee(String firstName, String lastName) {
         Employee newEmployee = new Employee(firstName, lastName);
 
         if (employees.contains(newEmployee)) {
@@ -24,14 +25,16 @@ public class EmployeeService {
         }
 
         employees.add(newEmployee);
+        return newEmployee;
     }
 
-    public void removeEmployee(String firstName, String lastName) {
+    public Employee removeEmployee(String firstName, String lastName) {
         Employee employeeToRemove = new Employee(firstName, lastName);
 
-        if (employees.remove(employeeToRemove)){
+        if (!employees.remove(employeeToRemove)){
             throw new EmployeeNotFoundException();
         }
+        return employeeToRemove;
     }
 
     public Employee findEmployee(String firstName, String lastName) {

@@ -2,12 +2,20 @@ package com.example.employee_management;
 
 import java.util.Objects;
 
-public class Employee {
-    private final String firstName;
-    private final String lastName;
+public  class  Employee {
+    private  String firstName;
+    private  String lastName;
 
     public Employee(String firstName, String lastName) {
         this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
