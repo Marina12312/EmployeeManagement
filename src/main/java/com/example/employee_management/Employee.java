@@ -1,5 +1,7 @@
 package com.example.employee_management;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Objects;
 
 public  class  Employee {
@@ -7,8 +9,8 @@ public  class  Employee {
     private  String lastName;
 
     public Employee(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstName =  StringUtils.capitalize(firstName.toLowerCase());
+        this.lastName = StringUtils.capitalize(lastName.toLowerCase());
     }
 
     public void setFirstName(String firstName) {
